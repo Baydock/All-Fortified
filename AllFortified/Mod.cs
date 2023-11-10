@@ -11,6 +11,7 @@ using Il2CppAssets.Scripts.Unity.UI_New.ChallengeEditor;
 using Il2CppAssets.Scripts.Unity.UI_New.InGame;
 using Il2CppAssets.Scripts.Unity.UI_New.InGame.BloonMenu;
 using Il2CppInterop.Runtime;
+using Il2CppInterop.Runtime.InteropTypes.Arrays;
 using Il2CppNinjaKiwi.Common;
 using MelonLoader;
 using System.Collections.Generic;
@@ -58,9 +59,9 @@ namespace AllFortified {
             }
 
 #if DEBUG
-            __result.roundSets = __result.roundSets.Add(new RoundSetModel("AllFortifiedRoundSet", new Il2CppReferenceArray<RoundModel>(1) {
+            GameData.Instance.roundSets = GameData.Instance.roundSets.Add(new RoundSetModel("AllFortifiedRoundSet", new Il2CppReferenceArray<RoundModel>(1) {
                 [0] = new RoundModel("", __result.bloons.Where(bloon => bloon.isFortified && AllFortified.BloonsToFortify.Contains(bloon.baseId)).Select((bloon, i) => new BloonGroupModel("", bloon.id, i * 60, (i + 1) * 60, 1)).ToArray())
-            }));
+            }, ""));
 #endif
 
             AllFortified.AddLocalization(LocalizationManager.Instance.defaultTable);
